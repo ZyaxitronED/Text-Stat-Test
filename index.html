@@ -15,7 +15,13 @@
 
     <div>
         <input type="file" onchange="textToArea()">
-        <textarea cols="30" rows="20"></textarea>
+        <textarea cols="30" rows="20" oninput="countWords()"></textarea>
+        <button onclick="countWords()">Evaluate Text</button>
+    </div>
+
+    <div>
+        <p id="wordCount"></p>
+        <p id="charCount"></p>
     </div>
 
 </body>
