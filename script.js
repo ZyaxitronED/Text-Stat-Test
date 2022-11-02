@@ -19,12 +19,19 @@ function textToArea() {
     reader.readAsText(file);
 };
 
-function countWords() {
+function Analyse() {
     var textareaValue = document.querySelector('textarea').value;
     var regex = /\s+/gi;
     var wordCount = textareaValue.trim().replace(regex, ' ').split(' ').length;
     var charCount = textareaValue.replace(regex, '').length;
+    var lineCount = 0;
+    var lines = textareaValue.split('\n');
+
+    for (var i = 0; i < lines.length; i++) {
+        if(lines[i].length > 0) lineCount++;
+    }
 
     document.getElementById('wordCount').innerHTML = "Word Count (Whitespace Delimited): " + wordCount;
     document.getElementById('charCount').innerHTML = "Character Count (Excluding Spaces): " + charCount;
+    document.getElementById('lineCount').innerHTML = "Line Count (Excluding Line Breaks): " + lineCount;
 };
