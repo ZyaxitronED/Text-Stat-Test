@@ -26,12 +26,41 @@ function Analyse() {
     var charCount = textareaValue.replace(regex, '').length;
     var lineCount = 0;
     var lines = textareaValue.split('\n');
+    var wordArray = textareaValue.split(' ');
+    var wordAvg = 0;
+
+    for (var i = 0; i < wordCount; i++) {
+        wordAvg += wordArray[i].length;
+    }
+
+    var avgLeng = wordAvg / wordCount;
 
     for (var i = 0; i < lines.length; i++) {
         if(lines[i].length > 0) lineCount++;
     }
 
+    const maxChar = str => {
+        const strObj = {};
+        var maxCount = 0;
+        var maxChar = "";
+
+        for (let char of str) {
+            strObj[char] = strObj[char] + 1 || 1;
+        }
+
+        for (let key in strObj) {
+            if (strObj[key] > maxCount) {
+                maxCount = strObj[key];
+                maxChar = key;
+            }
+        }
+
+        return maxChar;
+    }
+
     document.getElementById('wordCount').innerHTML = "Word Count (Whitespace Delimited): " + wordCount;
     document.getElementById('charCount').innerHTML = "Character Count (Excluding Spaces): " + charCount;
     document.getElementById('lineCount').innerHTML = "Line Count (Excluding Line Breaks): " + lineCount;
+    document.getElementById('meanCount').innerHTML = "Mean Letter Per Word (To 1 Decimal Place): " + avgLeng.toFixed(1);
+    document.getElementById('commonLetter').innerHTML = "Most Common Letter: " + maxChar(textareaValue.replace(regex, ''));
 };
