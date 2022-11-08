@@ -58,6 +58,7 @@ function Analyse() {
         return maxChar;
     }
 
+    //not currently working -- results in alternate calculation to most common letter
     const mode = arr => {
         const mode = {};
         var max = 0, count = 0;
@@ -85,5 +86,5 @@ function Analyse() {
     document.getElementById('lineCount').innerHTML = "Line Count (Excluding Line Breaks): " + lineCount;
     document.getElementById('meanCount').innerHTML = "Mean Letter Per Word (To 1 Decimal Place): " + avgLeng.toFixed(1);
     document.getElementById('modeCount').innerHTML = "Mode Letter Per Word: " + mode(textareaValue);
-    document.getElementById('commonLetter').innerHTML = "Most Common Letter: " + maxChar(textareaValue.replace(regex, ' '));
+    document.getElementById('commonLetter').innerHTML = "Most Common Letter: " + maxChar(textareaValue.replace(regex, ''));
 };
