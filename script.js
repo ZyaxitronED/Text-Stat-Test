@@ -28,6 +28,7 @@ function Analyse() {
     var lines = textareaValue.split('\n');
     var wordArray = textareaValue.replace(regex, ' ').split(' ');
     var wordAvg = 0;
+    var wordLengToNum = textareaValue.split(/\s+/).map(({length}) => length);
 
     for (var i = 0; i < wordCount; i++) {
         wordAvg += wordArray[i].length;
@@ -58,7 +59,6 @@ function Analyse() {
         return maxChar;
     }
 
-    //not currently working -- results in alternate calculation to most common letter
     const mode = arr => {
         const mode = {};
         var max = 0, count = 0;
@@ -84,7 +84,7 @@ function Analyse() {
     document.getElementById('wordCount').innerHTML = "Word Count (Whitespace Delimited): " + wordCount;
     document.getElementById('charCount').innerHTML = "Character Count (Excluding Spaces): " + charCount;
     document.getElementById('lineCount').innerHTML = "Line Count (Excluding Line Breaks): " + lineCount;
-    document.getElementById('meanCount').innerHTML = "Mean Letter Per Word (To 1 Decimal Place): " + avgLeng.toFixed(1);
-    document.getElementById('modeCount').innerHTML = "Mode Letter Per Word: " + mode(textareaValue);
+    document.getElementById('meanCount').innerHTML = "Mean Letters Per Word (To 1 Decimal Place): " + avgLeng.toFixed(1);
+    document.getElementById('modeCount').innerHTML = "Mode Letters Per Word: " + mode(wordLengToNum);
     document.getElementById('commonLetter').innerHTML = "Most Common Letter: " + maxChar(textareaValue.replace(regex, ''));
 };
