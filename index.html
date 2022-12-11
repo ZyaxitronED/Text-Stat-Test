@@ -16,14 +16,17 @@
     <div>
         <input type="file" onchange="textToArea()">
         <textarea cols="30" rows="20" placeholder="Your text file will appear here for you to edit!" oninput="Analyse()"></textarea>
-        <button onclick="Analyse()">Evaluate Text</button>
+        <button id="evaluate" onclick="Analyse()">Evaluate Text</button>
     </div>
+
+    <hr>
 
     <div>
         <p id="wordCount">Word Count (Whitespace Delimited): --</p>
         <p id="charCount">Character Count (Excluding Spaces): --</p>
         <p id="lineCount">Line Count (Excluding Line Breaks): --</p>
         <p id="meanCount">Mean Letters Per Word (To 1 Decimal Place): --</p>
+        <p id="mediCount">Median of Text Area: --</p>
         <p id="modeCount">Mode Letters Per Word: --</p>
         <p id="commonLetter">Most Common Letter: --</p>
     </div>

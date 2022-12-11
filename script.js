@@ -81,10 +81,25 @@ function Analyse() {
         return max;
     }
 
+    /*function median(arr) {
+     const midpoint = Math.floor(arr / 2);
+     const median = arr % 2 === 1 ?
+         arr[midpoint] :
+         (arr[midpoint - 1] + arr[midpoint]) / 2;
+     return median;
+     }*/
+
+    const median = arr => {
+        const mid = Math.floor(arr.length / 2),
+            nums = [...arr].sort((a, b) => a - b);
+        return arr.length % 2 !==0 ? nums[mid] : (nums[mid - 1] + nums[mid]) / 2;
+    }
+
     document.getElementById('wordCount').innerHTML = "Word Count (Whitespace Delimited): " + wordCount;
     document.getElementById('charCount').innerHTML = "Character Count (Excluding Spaces): " + charCount;
     document.getElementById('lineCount').innerHTML = "Line Count (Excluding Line Breaks): " + lineCount;
     document.getElementById('meanCount').innerHTML = "Mean Letters Per Word (To 1 Decimal Place): " + avgLeng.toFixed(1);
+    document.getElementById('mediCount').innerHTML = "Median of Text Area: " + median(wordLengToNum);
     document.getElementById('modeCount').innerHTML = "Mode Letters Per Word: " + mode(wordLengToNum);
     document.getElementById('commonLetter').innerHTML = "Most Common Letter: " + maxChar(textareaValue.replace(regex, ''));
 };

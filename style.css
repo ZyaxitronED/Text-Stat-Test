@@ -33,3 +33,11 @@
     width: 50%;
   }
 
+  button#evaluate {
+    margin-top: 10px;
+  }
+
+  hr {
+    width: 80%;
+  }
+
